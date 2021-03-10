@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  restaurant_id: 1
+  top_four: false
+  outdoor_seating: false
+  reservations: false
+  bottomless: false
+  bottomless_price: MyString
+  time_limit: MyString
+  attribute1: MyString
+  attribute2: MyString
+  attribute3: MyString
+
+two:
+  user_id: 1
+  restaurant_id: 1
+  top_four: false
+  outdoor_seating: false
+  reservations: false
+  bottomless: false
+  bottomless_price: MyString
+  time_limit: MyString
+  attribute1: MyString
+  attribute2: MyString
+  attribute3: MyString
