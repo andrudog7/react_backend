@@ -9,7 +9,16 @@ class UserSerializer < ActiveModel::Serializer
       city: res.restaurant.city,
       state: res.restaurant.state,
       id: res.restaurant_id,
-      bottomless: res.bottomless} 
+      bottomless: res.bottomless,
+      bottomless_price: res.bottomless_price,
+      time_limit: res.time_limit,
+      top_four: res.top_four,
+      outdoor_seating: res.outdoor_seating,
+      reservations: res.reservations,
+      attribute1: res.attribute1,
+      attribute2: res.attribute2,
+      attribute3: res.attribute3,
+      } 
       end
   end
 
