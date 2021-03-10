@@ -6,4 +6,12 @@ class Comment < ApplicationRecord
     def upvote(user)
         Vote.create(up: true, comment_id: self.id, user_id: user.id)
     end
+
+    def upVotes
+        self.votes.where(up: true).count
+    end
+
+    def downVotes 
+        self.votes.where(up: false).count
+    end
 end

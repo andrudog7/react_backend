@@ -6,7 +6,10 @@ class RestaurantSerializer < ActiveModel::Serializer
     self.object.comments.map do |comment|
       {text: comment.text,
       username: comment.user.username,
-      created_at: comment.created_at}
+      created_at: comment.created_at,
+      upVotes: comment.upVotes,
+      downVotes: comment.downVotes
+    }
       end
   end
 end
