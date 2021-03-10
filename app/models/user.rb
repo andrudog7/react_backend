@@ -13,5 +13,9 @@ class User < ApplicationRecord
         else
           image
         end
-      end
+    end
+
+    def my_restaurants
+        self.users_restaurants
+    end
 end
