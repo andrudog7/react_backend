@@ -6,6 +6,8 @@ class UsersController < ApplicationController
     end
 
     def create
+        byebug
+        
         @user = User.create(user_params)
         if @user.valid?
             @token = encode_token(user_id: @user.id)
@@ -18,7 +20,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :email, :password, :avatar)
+        params.require(:user).permit(:username, :email, :password, :city, :avatar)
     end
 
 end
