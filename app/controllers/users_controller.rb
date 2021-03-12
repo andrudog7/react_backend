@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    skip_before_action :authorized, only: [:create]
 
     def index 
         @users = User.all 
@@ -6,8 +7,6 @@ class UsersController < ApplicationController
     end
 
     def create
-        byebug
-        
         @user = User.create(user_params)
         if @user.valid?
             @token = encode_token(user_id: @user.id)
@@ -20,7 +19,7 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.require(:user).permit(:username, :email, :password, :city, :avatar)
+        params.require(:user).permit(:username, :email, :password, :city, :image)
     end
 
 end
