@@ -15,7 +15,7 @@ class Restaurant < ApplicationRecord
             address1: business["location"]["address1"],
             city: business["location"]["city"],
             state: business["location"]["state"],
-            zip_code: business["location"]["zip_code"]
+            zip_code: business["location"]["zip_code"],
             price: business["price"],
             rating: business["rating"],
             url: business["url"],
