@@ -3,6 +3,27 @@ class Restaurant < ApplicationRecord
     has_many :users, through: :users_restaurants
     has_many :comments 
 
+    def self.get_restaurants_from_yelp(location)
+        res = YelpSearch.new(location)
+        businesses = res.results["businesses"]
+        businesses.each{|business| create_from_yelp_data(business)}
+    end
+
+    def self.create_from_yelp_data(business)
+        create(
+            name: business["name"],
+            address1: business["location"]["address1"],
+            city: business["location"]["city"],
+            state: business["location"]["state"],
+            zip_code: business["location"]["zip_code"]
+            price: business["price"],
+            rating: business["rating"],
+            url: business["url"],
+            image_url: business["image_url"],
+            yelp_id: business["id"]
+        )
+    end
+
     def bottomless_upvote
         self.users_restaurants.where(bottomless: true).count
     end

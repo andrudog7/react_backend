@@ -38,3 +38,5 @@ module ReactBackend
     config.api_only = true
   end
 end
+
+Dotenv::Railtie.load
