@@ -2,7 +2,6 @@ class UserSerializer < ActiveModel::Serializer
   attributes :id, :username, :email, :city, :my_image
   has_many :users_restaurants
 
-  
   def users_restaurants
     self.object.users_restaurants.map do |res|
       {id: res.restaurant_id,
