@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_11_150556) do
+ActiveRecord::Schema.define(version: 2021_03_16_162701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,11 @@ ActiveRecord::Schema.define(version: 2021_03_11_150556) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "drink_specials"
+    t.boolean "my_profile"
+    t.boolean "drink_specials_down"
+    t.boolean "bottomless_down"
+    t.boolean "reservations_down"
+    t.boolean "outdoor_seating_down"
   end
 
   create_table "votes", force: :cascade do |t|

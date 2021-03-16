@@ -12,7 +12,11 @@ class UserSerializer < ActiveModel::Serializer
       top_four: res.top_four,
       attribute1: res.attribute1,
       attribute2: res.attribute2,
-      attribute3: res.attribute3
+      attribute3: res.attribute3,
+      bottomless: res.bottomless,
+      outdoor_seating: res.outdoor_seating,
+      reservations: res.reservations,
+      drink_specials: res.drink_specials
       } 
       end
   end

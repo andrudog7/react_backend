@@ -10,6 +10,9 @@ class Restaurant < ApplicationRecord
     end
 
     def self.create_from_yelp_data(business)
+        if (Restaurant.find_by(yelp_id: business["id"]))
+            nil
+        else
         create(
             name: business["name"],
             address1: business["location"]["address1"],
@@ -22,6 +25,7 @@ class Restaurant < ApplicationRecord
             image_url: business["image_url"],
             yelp_id: business["id"]
         )
+    end
     end
 
     def bottomless_upvote

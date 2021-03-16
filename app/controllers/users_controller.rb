@@ -9,6 +9,10 @@ class UsersController < ApplicationController
     def create
         @user = User.create(user_params)
         if @user.valid?
+            if @user.image === ""
+                @user.image = "https://icon-library.net//images/no-user-image-icon/no-user-image-icon-27.jpg"
+                @user.save
+            end
             @token = encode_token(user_id: @user.id)
             render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
         else 
