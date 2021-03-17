@@ -16,6 +16,12 @@ class User < ApplicationRecord
     end
 
     def my_restaurants
-        self.users_restaurants
+        restaurants = []
+        self.users_restaurants.where(my_profile: true).map{|o| o.attributes.each{|k, v| 
+            if k === "restaurant_id"
+                restaurants << Restaurant.find(v)
+            end
+        }}
+        restaurants
     end
 end
