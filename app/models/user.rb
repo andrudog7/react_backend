@@ -19,7 +19,7 @@ class User < ApplicationRecord
         restaurants = []
         self.users_restaurants.where(my_profile: true).map{|o| o.attributes.each{|k, v| 
             if k === "restaurant_id"
-                restaurants << Restaurant.find(v)
+                restaurants << RestaurantSerializer.new(Restaurant.find(v))
             end
         }}
         restaurants
