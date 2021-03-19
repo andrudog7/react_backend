@@ -17,10 +17,11 @@ class RestaurantSerializer < ActiveModel::Serializer
     :drink_specials_upvote, 
     :drink_specials_downvote,
     :outdoor_seating_upvote, 
-    :outdoor_seating_downvote
+    :outdoor_seating_downvote,
+    :drag_downvote,
+    :drag_upvote
 
   has_many :comments
-  # has_many :users_restaurants
   
   def comments 
     self.object.comments.map do |comment|

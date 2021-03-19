@@ -1,10 +1,9 @@
 class UsersRestaurantsController < ApplicationController
 
-    def create 
-        if users_restaurants_params.include?("bottomless") || users_restaurants_params.include?("reservations")
+    def create
+        if users_restaurants_params.include?("bottomless") || users_restaurants_params.include?("reservations") || users_restaurants_params.include?("drink_specials") || users_restaurants_params.include?("outdoor_seating") || users_restaurants_params.include?("drag_brunch")
             relationship = UsersRestaurant.find_or_create_by(user_id: users_restaurants_params[:user_id], restaurant_id: users_restaurants_params[:restaurant_id])
             relationship.update(users_restaurants_params)
-            # @restaurant = Restaurant.find(relationship.restaurant_id)
             render json: relationship
         else
         relationship = UsersRestaurant.find_or_create_by(users_restaurants_params)
@@ -30,6 +29,6 @@ class UsersRestaurantsController < ApplicationController
     private
 
     def users_restaurants_params
-        params.require(:users_restaurants).permit(:restaurant_id, :user_id, :my_profile, :bottomless, :reservations)
+        params.require(:users_restaurants).permit(:restaurant_id, :user_id, :my_profile, :bottomless, :reservations, :drink_specials, :outdoor_seating, :drag_brunch)
     end
 end

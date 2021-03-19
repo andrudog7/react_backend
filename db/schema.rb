@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_16_162701) do
+ActiveRecord::Schema.define(version: 2021_03_19_021350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -98,6 +98,7 @@ ActiveRecord::Schema.define(version: 2021_03_16_162701) do
     t.boolean "bottomless_down"
     t.boolean "reservations_down"
     t.boolean "outdoor_seating_down"
+    t.boolean "drag_brunch"
   end
 
   create_table "votes", force: :cascade do |t|

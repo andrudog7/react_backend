@@ -36,6 +36,14 @@ class Restaurant < ApplicationRecord
         self.users_restaurants.where(bottomless: false).count
     end
 
+    def drag_upvote
+        self.users_restaurants.where(drag_brunch: true).count
+    end
+
+    def drag_downvote
+        self.users_restaurants.where(drag_brunch: false).count
+    end
+
     def reservations_upvote
         self.users_restaurants.where(reservations: true).count
     end

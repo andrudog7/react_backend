@@ -17,6 +17,7 @@ class UserSerializer < ActiveModel::Serializer
       outdoor_seating: res.outdoor_seating,
       reservations: res.reservations,
       drink_specials: res.drink_specials,
+      drag_brunch: res.drag_brunch,
       restaurant_id: res.restaurant_id,
       user_id: res.user_id
       } 
