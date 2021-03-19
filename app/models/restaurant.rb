@@ -23,9 +23,16 @@ class Restaurant < ApplicationRecord
             rating: business["rating"],
             url: business["url"],
             image_url: business["image_url"],
-            yelp_id: business["id"]
+            yelp_id: business["id"],
+            phone: business["display_phone"],
+            categories: business["categories"].map{|cat|cat["title"]}
         )
     end
+    end
+
+    def formatted_categories
+        self
+        # .categories.map(|cat| cat.match(/(?<=title\\\"=>\\).*\\\"/).titlecase)
     end
 
     def bottomless_upvote
