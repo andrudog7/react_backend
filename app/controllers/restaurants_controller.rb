@@ -7,19 +7,21 @@ class RestaurantsController < ApplicationController
     end
 
     def create
-        @restaurants = Restaurant.all.where(city: restaurant_params[:location])
-        if @restaurants === []
+        # @restaurants = Restaurant.all.where(city: restaurant_params[:location])
+        # if @restaurants === []
             Restaurant.get_restaurants_from_yelp(restaurant_params[:location])
             @restaurants = Restaurant.all.where(city: restaurant_params[:location])
-            render json: @restaurants
-        else
+            # render json: @restaurants
+            @serialized = []
+            @restaurants.map{|res| @serialized << RestaurantSerializer.new(res)}
+        # else
             if current_user
-                @restaurants.concat(current_user.my_restaurants).uniq
-                render json: @restaurants
+                @my_restaurants = current_user.my_restaurants
+                render json: {restaurants: @serialized, my_restaurants: @my_restaurants}, status: :ok
             else
-                render json: @restaurants
+                render json: @serialized
             end
-        end
+        #end
         
     end
 
