@@ -22,7 +22,10 @@ class UsersRestaurantsController < ApplicationController
             render json: @relationship
         elsif params[:users_restaurants][:bottomless]
             @relationship = UsersRestaurant.find(params[:id])
-            byebug
+        else
+            @relationship = UsersRestaurant.find_or_create_by(user_id: users_restaurants_params[:user_id], restaurant_id: users_restaurants_params[:restaurant_id])
+            @relationship.update(:my_profile => "true")
+            render json: @relationship
         end
     end
 

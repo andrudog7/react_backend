@@ -26,14 +26,14 @@ class RestaurantSerializer < ActiveModel::Serializer
   has_many :comments
   
   def comments 
-    self.object.comments.map do |comment|
+    if self.object.comments 
+    self.object.comments.sort{|a, b| b.created_at <=> a.created_at}.map do |comment|
       {text: comment.text,
       username: comment.user.username,
-      created_at: comment.created_at,
-      upVotes: comment.upVotes,
-      downVotes: comment.downVotes
+      created_at: comment.created_at
     }
       end
+    end
   end
 
   # def users_restaurants

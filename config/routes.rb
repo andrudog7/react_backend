@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :votes
   resources :users_restaurants
   resources :comments
-  resources :restaurants
+  resources :restaurants do
+    resources :comments, only: [:index]
+    end
   resources :users
   post '/login', to: 'auth#create'
   get '/profile', to: 'users#profile'

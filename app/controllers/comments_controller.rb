@@ -1,9 +1,14 @@
 class CommentsController < ApplicationController
+    def index 
+        restaurant = Restaurant.find(params[:restaurant_id])
+        comments = restaurant.comments
+        comments.sort{|a, b|b.created_at <=> a.created_at} 
+        render json: comments
+    end
 
     def create 
         @comment = Comment.create(comment_params)
-        @restaurant = @comment.restaurant
-        render json: @restaurant
+        render json: @comment
     end
 
     private
