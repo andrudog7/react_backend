@@ -23,18 +23,18 @@ class RestaurantSerializer < ActiveModel::Serializer
     :drag_downvote,
     :drag_upvote
 
-  has_many :comments
+  # has_many :comments
   
-  def comments 
-    if self.object.comments 
-    self.object.comments.sort{|a, b| b.created_at <=> a.created_at}.map do |comment|
-      {text: comment.text,
-      username: comment.user.username,
-      created_at: comment.created_at
-    }
-      end
-    end
-  end
+  # def comments 
+  #   if self.object.comments 
+  #   self.object.comments.sort{|a, b| b.created_at <=> a.created_at}.map do |comment|
+  #     {text: comment.text,
+  #     username: comment.user.username,
+  #     created_at: comment.created_at
+  #   }
+  #     end
+  #   end
+  # end
 
   # def users_restaurants
   #   self.object.users_restaurants.map do |res|

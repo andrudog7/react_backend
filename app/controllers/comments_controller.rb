@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+    skip_before_action :authorized, only: [:index]
+
     def index 
         restaurant = Restaurant.find(params[:restaurant_id])
         comments = restaurant.comments

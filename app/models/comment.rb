@@ -7,6 +7,10 @@ class Comment < ApplicationRecord
         self.user.username
     end
 
+    def user_image 
+        self.user.my_image
+    end
+
     def upvote(user)
         Vote.create(up: true, comment_id: self.id, user_id: user.id)
     end

@@ -10,7 +10,8 @@ class UsersRestaurantsController < ApplicationController
         relationship.my_profile = true 
         relationship.save
         @restaurant = Restaurant.find(relationship.restaurant_id)
-        render json: @restaurant
+        render json: {restaurant: @restaurant, relationship: relationship}, status: :ok
+        # render json: @restaurant
         end
         
     end
