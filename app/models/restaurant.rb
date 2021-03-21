@@ -6,12 +6,14 @@ class Restaurant < ApplicationRecord
     def self.get_restaurants_from_yelp(location)
         res = YelpSearch.new(location)
         businesses = res.results["businesses"]
-        businesses.each{|business| create_from_yelp_data(business)}
+        searched = []
+        businesses.each{|business| searched << create_from_yelp_data(business)}
+        searched
     end
 
     def self.create_from_yelp_data(business)
         if (Restaurant.find_by(yelp_id: business["id"]))
-            nil
+            Restaurant.find_by(yelp_id: business["id"])
         else
         create(
             name: business["name"],

@@ -9,8 +9,10 @@ class RestaurantsController < ApplicationController
     def create
         # @restaurants = Restaurant.all.where(city: restaurant_params[:location])
         # if @restaurants === []
-            Restaurant.get_restaurants_from_yelp(restaurant_params[:location])
-            @restaurants = Restaurant.all.where(city: restaurant_params[:location])
+            @restaurants = Restaurant.get_restaurants_from_yelp(restaurant_params[:location])
+            # @serialized = []
+            # @restaurants.map{|res| @serialized << RestaurantSerializer.new(res)}
+            # @restaurants = Restaurant.all.where(city: restaurant_params[:location])
             # render json: @restaurants
             
         # else
