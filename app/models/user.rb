@@ -8,10 +8,10 @@ class User < ApplicationRecord
     has_many :comments 
 
     def my_image 
-        if avatar.attached?
-          avatar
+        if self.image === ""
+          self.image = "https://icon-library.net//images/no-user-image-icon/no-user-image-icon-27.jpg"
         else
-          image
+          self.image
         end
     end
 
