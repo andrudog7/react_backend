@@ -3,9 +3,7 @@ class AuthController < ApplicationController
 
   def create
     @user = User.find_by(username: user_login_params[:username])
-    #User#authenticate comes from BCrypt
     if @user && @user.authenticate(user_login_params[:password])
-      # encode token comes from ApplicationController
       token = encode_token({ user_id: @user.id }, Time.now.to_i + 864000)
       render json: { user: UserSerializer.new(@user), jwt: token }, status: :accepted
     else

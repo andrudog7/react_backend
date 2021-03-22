@@ -6,12 +6,11 @@ class UsersRestaurantsController < ApplicationController
             relationship.update(users_restaurants_params)
             render json: relationship
         else
-        relationship = UsersRestaurant.find_or_create_by(users_restaurants_params)
-        relationship.my_profile = true 
-        relationship.save
-        @restaurant = Restaurant.find(relationship.restaurant_id)
-        render json: {restaurant: @restaurant, relationship: relationship}, status: :ok
-        # render json: @restaurant
+            relationship = UsersRestaurant.find_or_create_by(users_restaurants_params)
+            relationship.my_profile = true 
+            relationship.save
+            @restaurant = Restaurant.find(relationship.restaurant_id)
+            render json: {restaurant: @restaurant, relationship: relationship}, status: :ok
         end
         
     end
