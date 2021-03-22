@@ -29,12 +29,7 @@ class Restaurant < ApplicationRecord
             phone: business["display_phone"],
             categories: business["categories"].map{|cat|cat["title"]}
         )
-    end
-    end
-
-    def formatted_categories
-        self
-        # .categories.map(|cat| cat.match(/(?<=title\\\"=>\\).*\\\"/).titlecase)
+        end
     end
 
     def bottomless_upvote

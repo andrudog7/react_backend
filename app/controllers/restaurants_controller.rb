@@ -1,11 +1,6 @@
 class RestaurantsController < ApplicationController
     skip_before_action :authorized, only: [:create, :index]
 
-    # def index 
-    #     @restaurants = Restaurant.all 
-    #     render json: @restaurants
-    # end
-
     def create
         # @restaurants = Restaurant.all.where(city: restaurant_params[:location])
         # if @restaurants === []
