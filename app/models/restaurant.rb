@@ -4,10 +4,17 @@ class Restaurant < ApplicationRecord
     has_many :comments 
 
     def self.get_restaurants_from_yelp(location)
-        res = YelpSearch.new(location)
+        i = 50
+        res = YelpSearch.new(location, i)
+        total = res.results["total"]
         businesses = res.results["businesses"]
         searched = []
         businesses.each{|business| searched << create_from_yelp_data(business)}
+        while i < (total > 1000 ? 949 : total)
+            i += 50
+            more = YelpSearch.new(location, i).results["businesses"]
+            more.each{|business| searched << create_from_yelp_data(business)}
+        end
         searched
     end
 
